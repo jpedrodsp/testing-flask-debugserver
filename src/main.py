@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 import datetime
+import argparse
 
 testapp = Flask(__name__)
 
@@ -14,7 +15,12 @@ def index():
     return 'OK'
 
 if __name__ == '__main__':
-    host = "0.0.0.0"
-    port = 5000
-    debug = True
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--host', help='host', default='0.0.0.0')
+    parser.add_argument('--port', help='port', default=5000)
+    parser.add_argument('--debug', help='debug', default=True)
+    args = parser.parse_args()
+    host = args.host
+    port = int(args.port)
+    debug = True if args.debug.lower() == 'true' else False
     testapp.run(host=host, port=port, debug=debug)
