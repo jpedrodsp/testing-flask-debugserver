@@ -10,7 +10,7 @@ For instance, on Linux:
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python server.py
+python src/main.py
 ```
 
 You can pass additional flags to the server:
